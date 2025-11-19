@@ -29,7 +29,7 @@ class WPN_Backup {
         
         global $wpdb;
         
-        // Obtener estadÃÆ’Ã†â€™Ãâ€šÃ‚Â­sticas
+        // Obtener estadí­sticas
         $te = $wpdb->prefix.'nmn_employees';
         $tq = $wpdb->prefix.'nmn_quincenas';
         $tqe = $wpdb->prefix.'nmn_quincena_employees';
@@ -50,28 +50,28 @@ class WPN_Backup {
         
         ?>
         <div class="wrap wpn-wrap">
-            <h1>ÃÆ’Ã‚Â°Ãâ€¦Ã‚Â¸ÃÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢Ãâ€šÃ‚Â¾ Exportar / Importar Datos</h1>
+            <h1>Exportar / Importar Datos</h1>
             
             <?php if (isset($_GET['exported']) && $_GET['exported'] === '1'): ?>
                 <div class="notice notice-success">
-                    <p>ÃÆ’Ã‚Â¢Ãâ€¦Ã¢â‚¬Å“ÃÂ¢Ã¢â€šÂ¬Ã‚Â¦ Datos exportados correctamente.</p>
+                    <p>Datos exportados correctamente.</p>
                 </div>
             <?php endif; ?>
             
             <?php if (isset($_GET['imported']) && $_GET['imported'] === '1'): ?>
                 <div class="notice notice-success">
-                    <p>ÃÆ’Ã‚Â¢Ãâ€¦Ã¢â‚¬Å“ÃÂ¢Ã¢â€šÂ¬Ã‚Â¦ Datos importados correctamente.</p>
+                    <p>Datos importados correctamente.</p>
                 </div>
             <?php endif; ?>
             
             <?php if (isset($_GET['error'])): ?>
                 <div class="notice notice-error">
-                    <p>ÃÆ’Ã‚Â¢Ãâ€šÃ‚ÂÃâ€¦Ã¢â‚¬â„¢ Error: <?php echo esc_html($_GET['error']); ?></p>
+                    <p>Error: <?php echo esc_html($_GET['error']); ?></p>
                 </div>
             <?php endif; ?>
             
             <div class="wpn-card">
-                <h2>ÃÆ’Ã‚Â°Ãâ€¦Ã‚Â¸ÃÂ¢Ã¢â€šÂ¬Ã…â€œÃâ€¦Ã‚Â  EstadÃÆ’Ã†â€™Ãâ€šÃ‚Â­sticas del Sistema</h2>
+                <h2>Estadí­sticas del Sistema</h2>
                 <div class="grid-3">
                     <div style="background: #f0f2f5; padding: 16px; border-radius: 8px;">
                         <div style="font-size: 32px; font-weight: bold; color: #1877f2;"><?php echo number_format($stats['empleados']); ?></div>
@@ -100,32 +100,32 @@ class WPN_Backup {
                 </div>
                 <div style="margin-top: 16px; padding: 16px; background: #e3f2fd; border-radius: 8px; border-left: 4px solid #1877f2;">
                     <p style="margin: 0; color: #0c5460;">
-                        <strong>ÃÆ’Ã‚Â¢ÃÂ¢Ã¢â€šÂ¬Ã…Â¾Ãâ€šÃ‚Â¹ÃÆ’Ã‚Â¯Ãâ€šÃ‚Â¸Ãâ€šÃ‚Â InformaciÃ³n:</strong> La exportaciÃÆ’Ã†â€™Ãâ€šÃ‚Â³n incluye todos los datos del sistema en formato JSON.
-                        La importaciÃÆ’Ã†â€™Ãâ€šÃ‚Â³n reemplazarÃÆ’Ã†â€™Ãâ€šÃ‚Â¡ completamente los datos actuales.
+                        <strong>Información:</strong> La exportación incluye todos los datos del sistema en formato JSON.
+                        La importación reemplazarí¡ completamente los datos actuales.
                     </p>
                 </div>
             </div>
             
             <div class="wpn-card">
-                <h2>ÃÆ’Ã‚Â°Ãâ€¦Ã‚Â¸ÃÂ¢Ã¢â€šÂ¬Ã…â€œÃÂ¢Ã¢â€šÂ¬Ã…Â¡ÃÆ’Ã‚Â°Ãâ€¦Ã‚Â¸ÃÂ¢Ã¢â€šÂ¬Ã…â€œÃâ€šÃ‚Â¥ Exportar Datos</h2>
+                <h2>Exportar Datos</h2>
                 <p>Descarga un archivo JSON con todos los datos del sistema (colaboradores, quincenas, bonos, reembolsos, vacaciones).</p>
                 <form method="post" action="<?php echo admin_url('admin-post.php'); ?>">
                     <?php wp_nonce_field('wpn_export_all'); ?>
                     <input type="hidden" name="action" value="wpn_export_all_data">
                     <button type="submit" class="button button-primary" style="background: #42b72a; border-color: #42b72a;">
-                        ÃÆ’Ã‚Â°Ãâ€¦Ã‚Â¸ÃÂ¢Ã¢â€šÂ¬Ã…â€œÃÂ¢Ã¢â€šÂ¬Ã…Â¡ÃÆ’Ã‚Â°Ãâ€¦Ã‚Â¸ÃÂ¢Ã¢â€šÂ¬Ã…â€œÃâ€šÃ‚Â¥ Descargar ExportaciÃ³n Completa
+                       Descargar Exportación Completa
                     </button>
                 </form>
             </div>
             
             <div class="wpn-card" style="background: #fff3cd; border-left: 4px solid #f0ad4e;">
-                <h2 style="color: #856404;">ÃÆ’Ã‚Â¢Ãâ€¦Ã‚Â¡Ãâ€šÃ‚Â ÃÆ’Ã‚Â¯Ãâ€šÃ‚Â¸Ãâ€šÃ‚Â Importar Datos</h2>
+                <h2 style="color: #856404;">Importar Datos</h2>
                 <p style="color: #856404;">
-                    <strong>ADVERTENCIA:</strong> La importaciÃÆ’Ã†â€™Ãâ€šÃ‚Â³n eliminarÃÆ’Ã†â€™Ãâ€šÃ‚Â¡ TODOS los datos actuales y los reemplazarÃÆ’Ã†â€™Ãâ€šÃ‚Â¡ con los del archivo.
-                    Esta acciÃÆ’Ã†â€™Ãâ€šÃ‚Â³n no se puede deshacer. Se recomienda hacer una exportaciÃÆ’Ã†â€™Ãâ€šÃ‚Â³n antes de importar.
+                    <strong>ADVERTENCIA:</strong> La importación eliminarí¡ TODOS los datos actuales y los reemplazarí¡ con los del archivo.
+                    Esta acción no se puede deshacer. Se recomienda hacer una exportación antes de importar.
                 </p>
                 <form method="post" action="<?php echo admin_url('admin-post.php'); ?>" enctype="multipart/form-data" 
-                      onsubmit="return confirm('ÃÆ’Ã‚Â¢Ãâ€¦Ã‚Â¡Ãâ€šÃ‚Â ÃÆ’Ã‚Â¯Ãâ€šÃ‚Â¸Ãâ€šÃ‚Â ATENCIÃÆ’Ã†â€™ÃÂ¢Ã¢â€šÂ¬Ã…â€œN: Esta acciÃÆ’Ã†â€™Ãâ€šÃ‚Â³n eliminarÃÆ’Ã†â€™Ãâ€šÃ‚Â¡ TODOS los datos actuales y los reemplazarÃÆ’Ã†â€™Ãâ€šÃ‚Â¡ con los del archivo.\n\nÃÆ’Ã¢â‚¬Å¡Ãâ€šÃ‚Â¿EstÃÆ’Ã†â€™Ãâ€šÃ‚Â¡s seguro de que deseas continuar?\n\nEsta acciÃÆ’Ã†â€™Ãâ€šÃ‚Â³n NO se puede deshacer.');">
+                      onsubmit="return confirm('ÃÆ’Ã‚Â¢Ãâ€¦Ã‚Â¡Ãâ€šÃ‚Â ÃÆ’Ã‚Â¯Ãâ€šÃ‚Â¸Ãâ€šÃ‚Â ATENCIÃÆ’Ã†â€™ÃÂ¢Ã¢â€šÂ¬Ã…â€œN: Esta acción eliminarí¡ TODOS los datos actuales y los reemplazarí¡ con los del archivo.\n\nÃÆ’Ã¢â‚¬Å¡Ãâ€šÃ‚Â¿Estí¡s seguro de que deseas continuar?\n\nEsta acción NO se puede deshacer.');">
                     <?php wp_nonce_field('wpn_import_all'); ?>
                     <input type="hidden" name="action" value="wpn_import_all_data">
                     <div style="margin-bottom: 16px;">
@@ -135,21 +135,21 @@ class WPN_Backup {
                         <input type="file" name="import_file" accept=".json" required style="padding: 8px;">
                     </div>
                     <button type="submit" class="button button-primary" style="background: #e4223d; border-color: #e4223d;">
-                        ÃÆ’Ã‚Â°Ãâ€¦Ã‚Â¸ÃÂ¢Ã¢â€šÂ¬Ã…â€œÃÂ¢Ã¢â€šÂ¬Ã…Â¡ÃÆ’Ã‚Â°Ãâ€¦Ã‚Â¸ÃÂ¢Ã¢â€šÂ¬Ã…â€œÃâ€šÃ‚Â¤ Importar Datos (Reemplazar Todo)
+                       Importar Datos (Reemplazar Todo)
                     </button>
                 </form>
             </div>
             
             <div class="wpn-card" style="background: #f8f9fa;">
-                <h3>ÃÆ’Ã‚Â°Ãâ€¦Ã‚Â¸ÃÂ¢Ã¢â€šÂ¬Ã…â€œÃÂ¢Ã¢â€šÂ¬Ã…Â¡ÃÆ’Ã‚Â°Ãâ€¦Ã‚Â¸ÃÂ¢Ã¢â€šÂ¬Ã…â€œÃÂ¢Ã¢â€šÂ¬Ã‚Â¹ Instrucciones</h3>
+                <h3>Instrucciones</h3>
                 <ol style="line-height: 1.8;">
-                    <li><strong>Exportar:</strong> Haz clic en el botÃÆ’Ã†â€™Ãâ€šÃ‚Â³n de exportaciÃÆ’Ã†â€™Ãâ€šÃ‚Â³n para descargar un archivo JSON con todos tus datos.</li>
+                    <li><strong>Exportar:</strong> Haz clic en el botón de exportación para descargar un archivo JSON con todos tus datos.</li>
                     <li><strong>Respaldo:</strong> Guarda el archivo en un lugar seguro como respaldo.</li>
                     <li><strong>Importar:</strong> Para restaurar datos, selecciona el archivo JSON y haz clic en importar.</li>
-                    <li><strong>MigraciÃÆ’Ã†â€™Ãâ€šÃ‚Â³n:</strong> Puedes usar esta funciÃÆ’Ã†â€™Ãâ€šÃ‚Â³n para migrar datos entre diferentes instalaciones de WordPress.</li>
+                    <li><strong>Migración:</strong> Puedes usar esta función para migrar datos entre diferentes instalaciones de WordPress.</li>
                 </ol>
                 <p style="color: #65676b; font-size: 14px; margin-top: 16px;">
-                    ÃÆ’Ã‚Â°Ãâ€¦Ã‚Â¸ÃÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢Ãâ€šÃ‚Â¡ <strong>Tip:</strong> Te recomendamos hacer exportaciones periÃÆ’Ã†â€™Ãâ€šÃ‚Â³dicas como respaldo de tu informaciÃÆ’Ã†â€™Ãâ€šÃ‚Â³n.
+                     <strong>Tip:</strong> Te recomendamos hacer exportaciones periódicas como respaldo de tu información.
                 </p>
             </div>
         </div>
@@ -209,7 +209,7 @@ class WPN_Backup {
         header('Pragma: no-cache');
         header('Expires: 0');
         
-        // UTF-8 BOM para asegurar codificaciÃÆ’Ã†â€™Ãâ€šÃ‚Â³n correcta
+        // UTF-8 BOM para asegurar codificación correcta
         echo "\xEF\xBB\xBF";
         echo $json;
         exit;
@@ -240,7 +240,7 @@ class WPN_Backup {
         $data = json_decode($file_content, true);
         
         if ($data === null || !isset($data['tables'])) {
-            wp_redirect(admin_url('admin.php?page=wpn-backup&error=' . urlencode('Archivo JSON invÃÆ’Ã†â€™Ãâ€šÃ‚Â¡lido')));
+            wp_redirect(admin_url('admin.php?page=wpn-backup&error=' . urlencode('Archivo JSON inví¡lido')));
             exit;
         }
         
@@ -257,7 +257,7 @@ class WPN_Backup {
             'vac_solicitudes' => $wpdb->prefix.'nmn_vac_solicitudes',
         ];
         
-        // Iniciar transacciÃÆ’Ã†â€™Ãâ€šÃ‚Â³n
+        // Iniciar transacción
         $wpdb->query('START TRANSACTION');
         
         try {
@@ -289,7 +289,7 @@ class WPN_Backup {
                 }
             }
             
-            // Confirmar transacciÃÆ’Ã†â€™Ãâ€šÃ‚Â³n
+            // Confirmar transacción
             $wpdb->query('COMMIT');
             
             wp_redirect(admin_url('admin.php?page=wpn-backup&imported=1'));
