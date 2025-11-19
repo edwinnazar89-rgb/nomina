@@ -62,7 +62,7 @@ class WPN_Mi_Informacion {
 
     public static function render_form(){
         if (!is_user_logged_in()){
-            return '<div class="wpn-box">Debes iniciar sesiÃ³n para ver tu informaciÃ³n.</div>';
+            return '<div class="wpn-box">Debes iniciar sesión para ver tu información.</div>';
         }
         $emp = self::get_employee_for_current_user();
         if (!$emp){
@@ -77,24 +77,24 @@ class WPN_Mi_Informacion {
         
         ob_start(); ?>
         <div class="wpn-card">
-            <h2 style="margin:0 0 12px;">Mi informaciÃ³n</h2>
-            <p style="margin:0 0 16px;">Actualiza tus datos bancarios y rÃ©gimen SAT. Tu RFC, CURP y fecha de ingreso son de solo lectura.</p>
+            <h2 style="margin:0 0 12px;">Mi información</h2>
+            <p style="margin:0 0 16px;">Actualiza tus datos bancarios y régimen SAT. Tu RFC, CURP y fecha de ingreso son de solo lectura.</p>
 
             <?php if (!empty($_GET['updated'])): ?>
                 <div class="notice notice-success" style="padding:10px;border-left:4px solid #46b450;background:#f5fff8;margin-bottom:16px;">
-                    Datos actualizados con Ã©xito.
+                    Datos actualizados con éxito.
                 </div>
             <?php endif; ?>
             
             <?php if (!empty($_GET['password_updated'])): ?>
                 <div class="notice notice-success" style="padding:10px;border-left:4px solid #46b450;background:#f5fff8;margin-bottom:16px;">
-                    âœ… ContraseÃ±a actualizada exitosamente.
+                    âœ… Contraseña actualizada exitosamente.
                 </div>
             <?php endif; ?>
 
             <?php if (!empty($_GET['password_error'])): ?>
                 <div class="notice notice-error" style="padding:10px;border-left:4px solid #dc3232;background:#fef2f2;margin-bottom:16px;">
-                    Error: La contraseÃ±a actual es incorrecta.
+                    Error: La contraseña actual es incorrecta.
                 </div>
             <?php endif; ?>
 
@@ -133,14 +133,14 @@ class WPN_Mi_Informacion {
                     </label>
 
                     <label class="wpn-field">CLABE
-                        <input type="text" name="clabe" value="<?php echo esc_attr($emp->clabe); ?>" maxlength="18" pattern="[0-9]{18}" title="18 dÃ­gitos">
+                        <input type="text" name="clabe" value="<?php echo esc_attr($emp->clabe); ?>" maxlength="18" pattern="[0-9]{18}" title="18 dígitos">
                     </label>
-                    <label class="wpn-field">RÃ©gimen SAT
+                    <label class="wpn-field">Régimen SAT
                         <input type="text" name="regimen_sat" value="<?php echo esc_attr($emp->regimen_sat); ?>" maxlength="191">
                     </label>
                     
-                    <label class="wpn-field">CÃ³digo postal
-                        <input type="text" name="cp" value="<?php echo esc_attr(isset($emp->cp) ? $emp->cp : ''); ?>" maxlength="5" pattern="[0-9]{5}" title="5 dÃ­gitos">
+                    <label class="wpn-field">Código postal
+                        <input type="text" name="cp" value="<?php echo esc_attr(isset($emp->cp) ? $emp->cp : ''); ?>" maxlength="5" pattern="[0-9]{5}" title="5 dígitos">
                     </label>
                 </div>
 
@@ -150,13 +150,13 @@ class WPN_Mi_Informacion {
                 </div>
             </form>
             
-            <!-- SecciÃ³n de Cambio de ContraseÃ±a -->
+            <!-- Sección de Cambio de Contraseña -->
             <hr style="margin:30px 0;">
-            <h3>ðŸ”’ Cambiar ContraseÃ±a</h3>
+            <h3>ðŸ”’ Cambiar Contraseña</h3>
             <p style="color:#666;font-size:14px;">
-                Por defecto, tu contraseÃ±a es tu CURP. Puedes cambiarla aquÃ­ por mayor seguridad.
+                Por defecto, tu contraseña es tu CURP. Puedes cambiarla aquí por mayor seguridad.
                 <?php if ($emp->custom_password): ?>
-                    <br><span style="color:green;">âœ… Actualmente tienes una contraseÃ±a personalizada.</span>
+                    <br><span style="color:green;">âœ… Actualmente tienes una contraseña personalizada.</span>
                 <?php endif; ?>
             </p>
             
@@ -165,7 +165,7 @@ class WPN_Mi_Informacion {
                 <input type="hidden" name="action" value="nomina_update_password">
                 
                 <div class="wpn-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-                    <label class="wpn-field">ContraseÃ±a Actual
+                    <label class="wpn-field">Contraseña Actual
                         <input type="password" name="current_password" required>
                         <span style="font-size:12px;color:#666;">
                             <?php if (!$emp->custom_password): ?>
@@ -175,18 +175,18 @@ class WPN_Mi_Informacion {
                     </label>
                     <div></div>
                     
-                    <label class="wpn-field">Nueva ContraseÃ±a
+                    <label class="wpn-field">Nueva Contraseña
                         <input type="password" name="new_password" required minlength="6">
-                        <span style="font-size:12px;color:#666;">MÃ­nimo 6 caracteres</span>
+                        <span style="font-size:12px;color:#666;">Mínimo 6 caracteres</span>
                     </label>
                     
-                    <label class="wpn-field">Confirmar Nueva ContraseÃ±a
+                    <label class="wpn-field">Confirmar Nueva Contraseña
                         <input type="password" name="confirm_password" required minlength="6">
                     </label>
                 </div>
                 
                 <div style="margin-top:16px;">
-                    <button type="submit" class="button button-primary">Cambiar ContraseÃ±a</button>
+                    <button type="submit" class="button button-primary">Cambiar Contraseña</button>
                 </div>
             </form>
         </div>
@@ -286,20 +286,20 @@ class WPN_Mi_Informacion {
         $new_password = $_POST['new_password'] ?? '';
         $confirm_password = $_POST['confirm_password'] ?? '';
         
-        // Verificar que las contraseÃ±as nuevas coincidan
+        // Verificar que las contraseñas nuevas coincidan
         if ($new_password !== $confirm_password){
             wp_safe_redirect(add_query_arg(['password_error'=>'mismatch'], wp_get_referer()));
             exit;
         }
         
-        // Verificar contraseÃ±a actual
+        // Verificar contraseña actual
         $valid = false;
         
-        // Si tiene contraseÃ±a personalizada, verificar contra la contraseÃ±a de WordPress
+        // Si tiene contraseña personalizada, verificar contra la contraseña de WordPress
         if ($emp->custom_password){
             $valid = wp_check_password($current_password, $user->data->user_pass, $user->ID);
         }
-        // Si no tiene contraseÃ±a personalizada, verificar contra CURP
+        // Si no tiene contraseña personalizada, verificar contra CURP
         else {
             $valid = (strtoupper($current_password) === strtoupper($emp->curp));
         }
@@ -309,18 +309,18 @@ class WPN_Mi_Informacion {
             exit;
         }
         
-        // Actualizar contraseÃ±a
+        // Actualizar contraseña
         wp_set_password($new_password, $user->ID);
         
-        // Marcar como contraseÃ±a personalizada
+        // Marcar como contraseña personalizada
         $wpdb->update($te, ['custom_password'=>1], ['id'=>$emp->id]);
         
-        // Re-autenticar al usuario para que no pierda la sesiÃ³n
+        // Re-autenticar al usuario para que no pierda la sesión
         wp_clear_auth_cookie();
         wp_set_current_user($user->ID);
         wp_set_auth_cookie($user->ID);
         
-        // Redireccionar con mensaje de Ã©xito
+        // Redireccionar con mensaje de éxito
         wp_safe_redirect(add_query_arg(['password_updated'=>'1'], wp_get_referer()));
         exit;
     }
