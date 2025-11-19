@@ -1,0 +1,670 @@
+/* Portal PÍƒÆ’Í†â€™Íƒâ€ Í¢â‚¬â„¢ÍƒÆ’Í¢â‚¬Å¡Íƒâ€šÍ‚Âºblico - DiseÍƒÆ’Í†â€™Íƒâ€ Í¢â‚¬â„¢ÍƒÆ’Í¢â‚¬Å¡Íƒâ€šÍ‚Â±o moderno inspirado en Facebook */
+:root {
+  --fb-primary: #1877f2;
+  --fb-primary-hover: #166fe5;
+  --fb-success: #42b72a;
+  --fb-danger: #e4223d;
+  --fb-warning: #f0ad4e;
+  --fb-gray-light: #f0f2f5;
+  --fb-gray: #65676b;
+  --fb-dark: #050505;
+  --fb-white: #ffffff;
+  --fb-border: #dadde1;
+  --fb-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+  --fb-shadow-sm: 0 1px 2px rgba(0, 0, 0, .1);
+  --fb-radius: 8px;
+  --fb-radius-lg: 12px;
+  --fb-radius-xl: 16px;
+}
+
+/* Reset y base */
+.wpn-portal * {
+  box-sizing: border-box;
+}
+
+.wpn-portal {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--fb-dark);
+  background: var(--fb-gray-light);
+  min-height: 100vh;
+}
+
+/* Login Card - Estilo Facebook */
+.wpn-login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  padding: 20px;
+}
+
+.wpn-login-card {
+  background: var(--fb-white);
+  border-radius: var(--fb-radius-xl);
+  box-shadow: var(--fb-shadow);
+  padding: 40px;
+  width: 100%;
+  max-width: 480px;
+  animation: fadeInUp 0.4s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wpn-login-card h2 {
+  color: var(--fb-primary);
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 8px;
+  text-align: center;
+}
+
+.wpn-login-card .subtitle {
+  color: var(--fb-gray);
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+/* MenÍƒÆ’Í†â€™Íƒâ€ Í¢â‚¬â„¢ÍƒÆ’Í¢â‚¬Å¡Íƒâ€šÍ‚Âº Principal con cards grandes */
+.wpn-main-menu {
+  margin-top: 20px;
+}
+
+.wpn-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.wpn-menu-card {
+  background: var(--fb-white);
+  border-radius: var(--fb-radius-xl);
+  box-shadow: var(--fb-shadow-sm);
+  padding: 40px 30px;
+  text-align: center;
+  text-decoration: none;
+  color: var(--fb-dark);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: block;
+}
+
+.wpn-menu-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--fb-shadow);
+  border: 2px solid var(--fb-primary);
+}
+
+.wpn-menu-icon {
+  font-size: 72px;
+  margin-bottom: 20px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.wpn-menu-card h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 16px 0;
+  color: var(--fb-primary);
+}
+
+.wpn-menu-card p {
+  font-size: 15px;
+  color: var(--fb-gray);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* BotÍƒÆ’Í†â€™Íƒâ€ Í¢â‚¬â„¢ÍƒÆ’Í¢â‚¬Å¡Íƒâ€šÍ‚Â³n de regreso */
+.wpn-back-button {
+  margin-bottom: 20px;
+}
+
+/* Formularios estilo Facebook */
+.wpn-form-group {
+  margin-bottom: 16px;
+}
+
+.wpn-form-group label {
+  display: block;
+  color: var(--fb-dark);
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.wpn-form-group input[type="text"],
+.wpn-form-group input[type="password"],
+.wpn-form-group input[type="email"],
+.wpn-form-group input[type="number"],
+.wpn-form-group input[type="date"],
+.wpn-form-group input[type="file"],
+.wpn-form-group select,
+.wpn-form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 1px solid var(--fb-border);
+  border-radius: var(--fb-radius);
+  background: var(--fb-gray-light);
+  transition: all 0.2s ease;
+  color: var(--fb-dark);
+}
+
+.wpn-form-group input:focus,
+.wpn-form-group select:focus,
+.wpn-form-group textarea:focus {
+  outline: none;
+  border-color: var(--fb-primary);
+  background: var(--fb-white);
+  box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+}
+
+.wpn-form-group input:disabled {
+  background: #e8e8e8;
+  color: var(--fb-gray);
+  cursor: not-allowed;
+}
+
+/* Botones estilo Facebook */
+.wpn-btn-primary {
+  background: var(--fb-primary);
+  color: var(--fb-white);
+  border: none;
+  border-radius: var(--fb-radius);
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+}
+
+.wpn-btn-primary:hover {
+  background: var(--fb-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--fb-shadow-sm);
+}
+
+.wpn-btn-secondary {
+  background: var(--fb-gray-light);
+  color: var(--fb-dark);
+  border: 1px solid var(--fb-border);
+  border-radius: var(--fb-radius);
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wpn-btn-secondary:hover {
+  background: #e4e6e9;
+}
+
+.wpn-btn-success {
+  background: var(--fb-success);
+  color: var(--fb-white);
+  border: none;
+  border-radius: var(--fb-radius);
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.wpn-btn-success:hover {
+  background: #36a420;
+}
+
+.wpn-btn-danger {
+  background: var(--fb-danger);
+  color: var(--fb-white);
+  border: none;
+  border-radius: var(--fb-radius);
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.wpn-btn-danger:hover {
+  background: #c91f37;
+}
+
+/* Cards mejoradas */
+.wpn-card {
+  background: var(--fb-white);
+  border-radius: var(--fb-radius-lg);
+  box-shadow: var(--fb-shadow-sm);
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.wpn-card:hover {
+  box-shadow: var(--fb-shadow);
+}
+
+.wpn-card h2,
+.wpn-card h3 {
+  color: var(--fb-dark);
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+/* Portal Header mejorado */
+.wpn-portal-header {
+  background: var(--fb-white);
+  border-radius: var(--fb-radius-lg);
+  box-shadow: var(--fb-shadow-sm);
+  padding: 16px 24px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wpn-portal-header .left {
+  font-size: 16px;
+  color: var(--fb-gray);
+}
+
+.wpn-portal-header .left strong {
+  color: var(--fb-dark);
+  font-weight: 600;
+}
+
+.wpn-portal-header .right {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.wpn-info-link {
+  background: var(--fb-gray-light);
+  color: var(--fb-dark);
+  padding: 8px 16px;
+  border-radius: var(--fb-radius);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.wpn-info-link:hover {
+  background: var(--fb-primary);
+  color: var(--fb-white);
+  transform: translateY(-1px);
+}
+
+.wpn-logout {
+  color: var(--fb-danger);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 12px;
+  transition: all 0.2s ease;
+}
+
+.wpn-logout:hover {
+  background: rgba(228, 34, 61, 0.1);
+  border-radius: var(--fb-radius);
+}
+
+/* Tabs mejorados estilo Facebook */
+.wpn-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--fb-border);
+  padding-bottom: 0;
+}
+
+.wpn-tab {
+  background: transparent;
+  color: var(--fb-gray);
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: 12px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: var(--fb-radius) var(--fb-radius) 0 0;
+  margin-bottom: -1px;
+}
+
+.wpn-tab:hover {
+  background: var(--fb-gray-light);
+  color: var(--fb-dark);
+}
+
+.wpn-tab.active {
+  color: var(--fb-primary);
+  border-bottom-color: var(--fb-primary);
+  background: transparent;
+}
+
+/* Stats boxes */
+.wpn-stat {
+  background: var(--fb-gray-light);
+  border-radius: var(--fb-radius);
+  padding: 16px;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.wpn-stat:hover {
+  background: #e4e6eb;
+  transform: translateY(-2px);
+}
+
+.wpn-stat span {
+  display: block;
+  color: var(--fb-gray);
+  font-size: 13px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.wpn-stat strong {
+  display: block;
+  color: var(--fb-dark);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* Tablas mejoradas */
+.wpn-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--fb-white);
+  border-radius: var(--fb-radius);
+  overflow: hidden;
+}
+
+.wpn-table thead {
+  background: var(--fb-gray-light);
+}
+
+.wpn-table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--fb-dark);
+  border-bottom: 1px solid var(--fb-border);
+}
+
+.wpn-table td {
+  padding: 12px 16px;
+  font-size: 14px;
+  color: var(--fb-dark);
+  border-bottom: 1px solid var(--fb-gray-light);
+}
+
+.wpn-table tbody tr:hover {
+  background: var(--fb-gray-light);
+}
+
+.wpn-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Grids responsive */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* Notices estilo Facebook */
+.notice {
+  padding: 12px 16px;
+  border-radius: var(--fb-radius);
+  margin-bottom: 16px;
+  font-size: 14px;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.notice-success {
+  background: #d4f4dd;
+  border-left: 4px solid var(--fb-success);
+  color: #1e7e34;
+}
+
+.notice-error {
+  background: #fce4e4;
+  border-left: 4px solid var(--fb-danger);
+  color: #721c24;
+}
+
+.notice-info {
+  background: #e3f2fd;
+  border-left: 4px solid var(--fb-primary);
+  color: #0c5460;
+}
+
+/* Animations */
+.wpn-card,
+.wpn-stat,
+.wpn-tab {
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Total box destacado */
+.wpn-total-box {
+  background: linear-gradient(135deg, var(--fb-primary), var(--fb-primary-hover));
+  color: var(--fb-white);
+  border-radius: var(--fb-radius-lg);
+  padding: 24px;
+  text-align: center;
+  box-shadow: var(--fb-shadow);
+}
+
+.wpn-total-box h3 {
+  color: var(--fb-white);
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.wpn-total-box p {
+  margin: 0;
+}
+
+.wpn-total-box strong {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+  
+  .wpn-menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wpn-portal-header {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .wpn-tabs {
+    flex-wrap: wrap;
+  }
+
+  .wpn-tab {
+    flex: 1 1 auto;
+    min-width: 100px;
+  }
+
+  .wpn-login-card {
+    padding: 24px;
+  }
+}
+
+/* Details/Summary personalizado */
+details {
+  margin-top: 8px;
+}
+
+details summary {
+  background: var(--fb-gray-light);
+  color: var(--fb-primary);
+  padding: 8px 12px;
+  border-radius: var(--fb-radius);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+details summary:hover {
+  background: var(--fb-primary);
+  color: var(--fb-white);
+}
+
+details[open] summary {
+  background: var(--fb-primary);
+  color: var(--fb-white);
+  border-radius: var(--fb-radius) var(--fb-radius) 0 0;
+}
+
+details[open] {
+  background: var(--fb-gray-light);
+  border-radius: var(--fb-radius);
+  padding-bottom: 12px;
+}
+
+/* Iconos con emojis mejorados */
+.icon-emoji {
+  font-size: 1.2em;
+  margin-right: 8px;
+  display: inline-block;
+}
+
+/* Badge mejorado */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--fb-primary);
+  color: var(--fb-white);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge.success {
+  background: var(--fb-success);
+}
+
+.badge.danger {
+  background: var(--fb-danger);
+}
+
+.badge.warning {
+  background: var(--fb-warning);
+}
+
+/* Hover effects globales */
+a {
+  color: var(--fb-primary);
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--fb-primary-hover);
+}
+
+/* Focus visible para accesibilidad */
+*:focus-visible {
+  outline: 2px solid var(--fb-primary);
+  outline-offset: 2px;
+}
