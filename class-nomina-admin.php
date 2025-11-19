@@ -55,14 +55,14 @@ class WPN_Admin {
 
     public static function menu(){
         // MenÃº principal
-        add_menu_page('NÃ³mina', 'NÃ³mina', 'manage_options', 'wp-nomina', [__CLASS__,'page_employees'], 'dashicons-groups', 26);
+        add_menu_page('Nómina', 'Nómina', 'manage_options', 'wp-nomina', [__CLASS__,'page_employees'], 'dashicons-groups', 26);
         // SubmenÃºs
         add_submenu_page('wp-nomina','Colaboradores (Listado)','Colaboradores','manage_options','wpn-colaboradores',[__CLASS__,'render_colaboradores_list']);
         add_submenu_page('wp-nomina','Alta de colaborador','Alta de colaborador','manage_options','wpn-colaboradores-alta',[__CLASS__,'render_colaboradores_alta']);
         add_submenu_page('wp-nomina','Quincenas','Quincenas','manage_options','wpn-quincenas', [__CLASS__,'page_quincenas']);
         add_submenu_page('wp-nomina','Vacaciones','Vacaciones','manage_options','nomina_vacaciones', [__CLASS__,'render_vacaciones_admin']);
         add_submenu_page('wp-nomina','Reporte de Vacaciones','Reporte de Vacaciones','manage_options','nomina_vacaciones_reporte',[__CLASS__,'render_vacaciones_reporte']);
-        add_submenu_page('wp-nomina','ExportaciÃ³n personalizada','Exportar quincena','manage_options','wpn-export-custom',[__CLASS__,'page_export_custom']);
+        add_submenu_page('wp-nomina','Exportación personalizada','Exportar quincena','manage_options','wpn-export-custom',[__CLASS__,'page_export_custom']);
 
         // Cleanup: remove auto-generated duplicate submenu
         global $submenu;
@@ -169,8 +169,8 @@ class WPN_Admin {
                             <input type="text" name="cp" value="<?php echo esc_attr($editing['cp'] ?? ''); ?>" maxlength="10" pattern="[0-9]{4,10}" title="SÃ³lo nÃºmeros, 4-10 dÃ­gitos">
                         </div>
                         <div>
-                            <label>RÃ©gimen SAT</label>
-                            <input type="text" name="regimen_sat" value="<?php echo esc_attr($editing['regimen_sat'] ?? ''); ?>" placeholder="RÃ©gimen fiscal (SAT)">
+                            <label>Régimen SAT</label>
+                            <input type="text" name="regimen_sat" value="<?php echo esc_attr($editing['regimen_sat'] ?? ''); ?>" placeholder="Régimen fiscal (SAT)">
                         </div>
                     </div>
                     <button class="button button-primary">Guardar</button>
@@ -182,7 +182,7 @@ class WPN_Admin {
                 <table class="widefat fixed striped">
                     <thead>
                         <tr>
-                            <th>ID</th><th>Nombre Completo</th><th>RFC</th><th>CURP</th><th>Fecha Ingreso</th><th>Ingreso mensual</th><th>Esquema</th><th>ContraseÃ±a</th><th>Acciones</th>
+                            <th>ID</th><th>Nombre Completo</th><th>RFC</th><th>CURP</th><th>Fecha Ingreso</th><th>Ingreso mensual</th><th>Esquema</th><th>Contraseña±a</th><th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -205,7 +205,7 @@ class WPN_Admin {
                                 <td>
                                     <a class="button" href="<?php echo admin_url('admin.php?page=wp-nomina&edit='.(int)$r->id); ?>">Editar</a>
                                     <?php if ($r->custom_password && $r->user_id): ?>
-                                        <form style="display:inline" method="post" action="<?php echo admin_url('admin-post.php'); ?>" onsubmit="return confirm('Â¿Restablecer contraseÃ±a al CURP original?');">
+                                        <form style="display:inline" method="post" action="<?php echo admin_url('admin-post.php'); ?>" onsubmit="return confirm('Â¿Restablecer Contraseña±a al CURP original?');">
                                             <?php wp_nonce_field('wpn_reset_password'); ?>
                                             <input type="hidden" name="action" value="wpn_reset_password">
                                             <input type="hidden" name="id" value="<?php echo (int)$r->id; ?>">
@@ -597,7 +597,7 @@ class WPN_Admin {
                             </select>
                         </div>
                     </div>
-                    <p>Al crear, se generarÃ¡ una fila por colaborador copiando datos base (sin bonos/reembolsos).</p>
+                    <p>Al crear, se generará una fila por colaborador copiando datos base (sin bonos/reembolsos).</p>
                     <button class="button button-primary">Crear quincena</button>
                 </form>
             </div>
@@ -1033,7 +1033,7 @@ class WPN_Admin {
                 <table class="widefat fixed striped">
                     <thead>
                         <tr>
-                            <th>ID</th><th>Nombre Completo</th><th>RFC</th><th>CURP</th><th>Fecha Ingreso</th><th>Ingreso mensual</th><th>Esquema</th><th>ContraseÃ±a</th><th>Acciones</th>
+                            <th>ID</th><th>Nombre Completo</th><th>RFC</th><th>CURP</th><th>Fecha Ingreso</th><th>Ingreso mensual</th><th>Esquema</th><th>Contraseña±a</th><th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -1056,7 +1056,7 @@ class WPN_Admin {
                                 <td>
                                     <a class="button" href="<?php echo admin_url('admin.php?page=wpn-colaboradores-alta&edit='.(int)$r->id); ?>">Editar</a>
                                     <?php if ($r->custom_password && $r->user_id): ?>
-                                        <form style="display:inline" method="post" action="<?php echo admin_url('admin-post.php'); ?>" onsubmit="return confirm('Â¿Restablecer contraseÃ±a al CURP original?');">
+                                        <form style="display:inline" method="post" action="<?php echo admin_url('admin-post.php'); ?>" onsubmit="return confirm('Â¿Restablecer Contraseña±a al CURP original?');">
                                             <?php wp_nonce_field('wpn_reset_password'); ?>
                                             <input type="hidden" name="action" value="wpn_reset_password">
                                             <input type="hidden" name="id" value="<?php echo (int)$r->id; ?>">
@@ -1140,7 +1140,7 @@ class WPN_Admin {
                     <option value="aprobada"   <?php selected($estado,'aprobada'); ?>>Aprobadas</option>
                     <option value="rechazada"  <?php selected($estado,'rechazada'); ?>>Rechazadas</option>
                 </select>
-                <input type="number" name="anio" placeholder="AÃ±o laboral" value="<?php echo $anio ? (int)$anio : ''; ?>" style="width:130px;">
+                <input type="number" name="anio" placeholder="Año laboral" value="<?php echo $anio ? (int)$anio : ''; ?>" style="width:130px;">
                 <button class="button">Filtrar</button>
             </form>
             
@@ -1159,7 +1159,7 @@ class WPN_Admin {
             <table class="widefat fixed striped">
                 <thead>
                     <tr>
-                        <th>ID</th><th>Colaborador</th><th>AÃ±o</th><th>Periodo</th><th>DÃ­as hÃ¡biles</th><th>Comentario</th><th>Estado</th><th>Email</th><th>Acciones</th>
+                        <th>ID</th><th>Colaborador</th><th>Año</th><th>Periodo</th><th>Días hábiles</th><th>Comentario</th><th>Estado</th><th>Email</th><th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -1414,13 +1414,13 @@ class WPN_Admin {
         ?>
         <div class="wrap wpn-wrap">
             <h1>Reporte de Vacaciones</h1>
-            <p>Resumen por colaborador del <strong>saldo disponible</strong> de vacaciones (aÃ±o laboral mÃ¡s reciente).</p>
+            <p>Resumen por colaborador del <strong>saldo disponible</strong> de vacaciones (Año laboral más reciente).</p>
             <table class="widefat striped">
                 <thead>
                     <tr>
                         <th style="width:28%">Colaborador</th>
                         <th style="width:18%">RFC</th>
-                        <th style="width:14%; text-align:right">AÃ±o laboral</th>
+                        <th style="width:14%; text-align:right">Año laboral</th>
                         <th style="width:14%; text-align:right">Asignados</th>
                         <th style="width:14%; text-align:right">Usados</th>
                         <th style="width:12%; text-align:right">Disponibles</th>
@@ -1476,7 +1476,7 @@ class WPN_Admin {
         $qs = $wpdb->get_results("SELECT id, label FROM $tq ORDER BY id DESC");
         ?>
         <div class="wrap wpn-wrap">
-            <h1>ExportaciÃ³n personalizada</h1>
+            <h1>Exportación personalizada</h1>
             <div class="wpn-card" style="max-width:640px;">
                 <h2>Selecciona la quincena</h2>
                 <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
