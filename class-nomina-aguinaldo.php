@@ -29,7 +29,7 @@ class WPN_Aguinaldo {
         global $wpdb;
         $te = $wpdb->prefix.'nmn_employees';
         
-        // AÃ±o seleccionado (por defecto el actual)
+        // Año seleccionado (por defecto el actual)
         $year = isset($_GET['year']) ? intval($_GET['year']) : intval(date('Y'));
         $current_year = intval(date('Y'));
         
@@ -38,11 +38,11 @@ class WPN_Aguinaldo {
             <h1>Calcular Aguinaldo</h1>
             
             <div class="wpn-card">
-                <h2>Seleccionar PerÃÆ’Ã†â€™Ãâ€šÃ‚Â­odo</h2>
+                <h2>Seleccionar Periodo</h2>
                 <form method="get">
                     <input type="hidden" name="page" value="wpn-aguinaldo">
                     <div style="display:flex;gap:12px;align-items:center;">
-                        <label>AÃ±o:</label>
+                        <label>Año:</label>
                         <select name="year" onchange="this.form.submit()">
                             <?php for($y = $current_year; $y >= $current_year - 5; $y--): ?>
                                 <option value="<?php echo $y; ?>" <?php selected($year, $y); ?>>
@@ -50,14 +50,14 @@ class WPN_Aguinaldo {
                                 </option>
                             <?php endfor; ?>
                         </select>
-                        <span class="description">El aguinaldo se calcula con 15 dÃÆ’Ã†â€™Ãâ€šÃ‚Â­as de salario por aÃÆ’Ã†â€™Ãâ€šÃ‚Â±o trabajado</span>
+                        <span class="description">El aguinaldo se calcula con 15 días de salario por año trabajado</span>
                     </div>
                 </form>
             </div>
             
             <div class="wpn-card">
-                <h2>CÃÆ’Ã‚Â¡lculo de Aguinaldo <?php echo $year; ?></h2>
-                <p class="description">PerÃÆ’Ã†â€™Ãâ€šÃ‚Â­odo de cÃÆ’Ã†â€™Ãâ€šÃ‚Â¡lculo: 1 de enero al 31 de diciembre del <?php echo $year; ?></p>
+                <h2>Cálculo de Aguinaldo <?php echo $year; ?></h2>
+                <p class="description">Periodo de cálculo: 1 de enero al 31 de diciembre del <?php echo $year; ?></p>
                 
                 <?php
                 $employees = $wpdb->get_results("SELECT * FROM $te ORDER BY nombre ASC");
@@ -79,7 +79,7 @@ class WPN_Aguinaldo {
                         <input type="hidden" name="action" value="wpn_export_aguinaldo">
                         <input type="hidden" name="year" value="<?php echo $year; ?>">
                         <button type="submit" class="button button-primary">
-                            ÃÆ’Ã‚Â°Ãâ€¦Ã‚Â¸ÃÂ¢Ã¢â€šÂ¬Ã…â€œÃâ€šÃ‚Â¥ Exportar Aguinaldo CSV
+                            Exportar Aguinaldo CSV
                         </button>
                     </form>
                     
@@ -90,7 +90,7 @@ class WPN_Aguinaldo {
                                 <th style="width:10%">RFC</th>
                                 <th style="width:12%">Fecha Ingreso</th>
                                 <th style="width:10%">DÃ­as Laborados</th>
-                                <th style="width:10%">AÃ±os Completos</th>
+                                <th style="width:10%">Años Completos</th>
                                 <th style="width:13%">Salario Mensual</th>
                                 <th style="width:10%">Salario Diario</th>
                                 <th style="width:10%"><strong>Aguinaldo</strong></th>
@@ -110,7 +110,7 @@ class WPN_Aguinaldo {
                                     <?php 
                                     echo number_format($a['dias_laborados']);
                                     if ($a['dias_laborados'] == 365) {
-                                        echo ' <span class="description">(aÃÆ’Ã†â€™Ãâ€šÃ‚Â±o completo)</span>';
+                                        echo ' <span class="description">(año completo)</span>';
                                     }
                                     ?>
                                 </td>
@@ -130,15 +130,14 @@ class WPN_Aguinaldo {
                     </table>
                     
                     <div class="wpn-card" style="margin-top:20px;background:#f8f9fa;">
-                        <h3>ÃÆ’Ã‚Â°Ãâ€¦Ã‚Â¸ÃÂ¢Ã¢â€šÂ¬Ã…â€œÃâ€¦Ã‚Â  Resumen</h3>
+                        <h3>Resumen</h3>
                         <p>Total de colaboradores: <strong><?php echo count($aguinaldos); ?></strong></p>
                         <p>Monto total de aguinaldo: <strong>$<?php echo number_format($total_aguinaldo, 2); ?></strong></p>
                         <p class="description">
-                            * El aguinaldo se calcula con base en 15 dÃÆ’Ã†â€™Ãâ€šÃ‚Â­as de salario por aÃÆ’Ã†â€™Ãâ€šÃ‚Â±o trabajado<br>
-                            * El cÃÆ’Ã†â€™Ãâ€šÃ‚Â¡lculo considera desde el 1ÃÆ’Ã¢â‚¬Å¡Ãâ€šÃ‚Â° de enero hasta el 31 de diciembre del <?php echo $year; ?><br>
-                            * Empleados que ingresaron antes del <?php echo $year; ?>: se consideran 365 dÃÆ’Ã†â€™Ãâ€šÃ‚Â­as laborados (aÃÆ’Ã†â€™Ãâ€šÃ‚Â±o completo)<br>
-                            * Empleados que ingresaron durante el <?php echo $year; ?>: dÃÆ’Ã†â€™Ãâ€šÃ‚Â­as naturales desde su ingreso hasta el 31 de diciembre<br>
-                            * FÃÆ’Ã†â€™Ãâ€šÃ‚Â³rmula: (15 dÃÆ’Ã†â€™Ãâ€šÃ‚Â­as ÃÆ’Ã†â€™Ãâ€šÃ‚Â· 365 dÃÆ’Ã†â€™Ãâ€šÃ‚Â­as) ÃÆ’Ã†â€™ÃÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â dÃÆ’Ã†â€™Ãâ€šÃ‚Â­as laborados ÃÆ’Ã†â€™ÃÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â salario diario
+                            * El aguinaldo se calcula con base en 15 días de salario por año trabajado<br>
+                            * El cálculo considera desde el 1º de enero hasta el 31 de diciembre del <?php echo $year; ?><br>
+                            * Empleados que ingresaron antes del <?php echo $year; ?>: se consideran 365 días laborados (año completo)<br>
+                            * Empleados que ingresaron durante el <?php echo $year; ?>: días naturales desde su ingreso hasta el 31 de diciembre<br>
                         </p>
                     </div>
                     
@@ -160,23 +159,23 @@ class WPN_Aguinaldo {
         $inicio_year = new DateTime("$year-01-01");
         $fin_year = new DateTime("$year-12-31");
         
-        // Si el empleado ingresÃÆ’Ã†â€™Ãâ€šÃ‚Â³ despuÃÆ’Ã†â€™Ãâ€šÃ‚Â©s del aÃÆ’Ã†â€™Ãâ€šÃ‚Â±o seleccionado, no aplica
+        // Si el empleado ingresó despuÃÆ’Ã†â€™Ãâ€šÃ‚Â©s del año seleccionado, no aplica
         if ($fecha_ingreso > $fin_year) {
             return null;
         }
         
-        // Determinar dÃÆ’Ã†â€™Ãâ€šÃ‚Â­as laborados en el aÃÆ’Ã†â€™Ãâ€šÃ‚Â±o
+        // Determinar días laborados en el año
         if ($fecha_ingreso < $inicio_year) {
-            // Si ingresÃÆ’Ã†â€™Ãâ€šÃ‚Â³ ANTES del aÃÆ’Ã†â€™Ãâ€šÃ‚Â±o en curso -> aÃÆ’Ã†â€™Ãâ€šÃ‚Â±o completo (365 dÃÆ’Ã†â€™Ãâ€šÃ‚Â­as)
+            // Si ingresó ANTES del año en curso -> año completo (365 días)
             $dias_laborados = 365;
         } else {
-            // Si ingresÃÆ’Ã†â€™Ãâ€šÃ‚Â³ DURANTE el aÃÆ’Ã†â€™Ãâ€šÃ‚Â±o -> calcular dÃÆ’Ã†â€™Ãâ€šÃ‚Â­as naturales desde ingreso hasta 31 de diciembre
-            // Calcular dÃÆ’Ã†â€™Ãâ€šÃ‚Â­as naturales correctamente
+            // Si ingresó DURANTE el año -> calcular días naturales desde ingreso hasta 31 de diciembre
+            // Calcular días naturales correctamente
             $diff = $fecha_ingreso->diff($fin_year);
-            $dias_laborados = $diff->days + 1; // +1 para incluir el dÃÆ’Ã†â€™Ãâ€šÃ‚Â­a de ingreso
+            $dias_laborados = $diff->days + 1; // +1 para incluir el día de ingreso
         }
         
-        // Calcular aÃÆ’Ã†â€™Ãâ€šÃ‚Â±os completos trabajados hasta el 31 de diciembre del aÃÆ’Ã†â€™Ãâ€šÃ‚Â±o seleccionado
+        // Calcular años completos trabajados hasta el 31 de diciembre del año seleccionado
         $diff_total = $fecha_ingreso->diff($fin_year);
         $anos_completos = $diff_total->y + ($diff_total->m / 12) + ($diff_total->d / 365);
         
@@ -184,8 +183,8 @@ class WPN_Aguinaldo {
         $salario_mensual = floatval($emp->ingreso_mensual);
         $salario_diario = $salario_mensual / 30;
         
-        // CÃÆ’Ã‚Â¡lculo del aguinaldo proporcional a los dÃÆ’Ã†â€™Ãâ€šÃ‚Â­as laborados
-        // FÃÆ’Ã†â€™Ãâ€šÃ‚Â³rmula: (15 dÃÆ’Ã†â€™Ãâ€šÃ‚Â­as / 365 dÃÆ’Ã†â€™Ãâ€šÃ‚Â­as) * dÃÆ’Ã†â€™Ãâ€šÃ‚Â­as laborados * salario diario
+        // Cálculo del aguinaldo proporcional a los días laborados
+        // Fórmula: (15 días / 365 días) * días laborados * salario diario
         $monto_aguinaldo = (15 / 365) * $dias_laborados * $salario_diario;
         
         // Obtener CP si existe la columna
@@ -197,7 +196,7 @@ class WPN_Aguinaldo {
             $cp = $emp->cp;
         }
         
-        // Devolver con campos separados para exportaciÃÆ’Ã†â€™Ãâ€šÃ‚Â³n
+        // Devolver con campos separados para exportación
         return [
             'nombre' => $emp->nombre,
             'apellido_paterno' => $emp->apellido_paterno ?? '',
@@ -231,7 +230,7 @@ class WPN_Aguinaldo {
         
         $employees = $wpdb->get_results("SELECT * FROM $te ORDER BY nombre ASC");
         
-        // Preparar datos para exportaciÃÆ’Ã†â€™Ãâ€šÃ‚Â³n
+        // Preparar datos para exportación
         $aguinaldos = [];
         foreach($employees as $emp) {
             $aguinaldo_data = self::calcular_aguinaldo($emp, $year);
